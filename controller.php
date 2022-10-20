@@ -1,4 +1,14 @@
-   public function upto(Post $post)
+public function index()
+{
+        $posts = Post::orderby('pos', 'desc')->get();
+        return view('index')
+            ->with(['posts' => $posts]);
+}
+
+
+
+
+public function upto(Post $post)
     {
         $num = $post->pos;
 
