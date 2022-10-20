@@ -6,3 +6,10 @@
         </div>
         
         {{ --- upto downto ---}}
+        
+        
+        <form method="post" action="{{ route('posts.checked', $post) }}">
+             @method('PATCH')
+             @csrf
+             <input type="checkbox" {{ $post->is_done ? 'checked' : ''; }}>
+        </form>
