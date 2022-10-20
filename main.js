@@ -27,3 +27,25 @@ uptos.forEach(upto => {
         }
     })
 });
+
+/// ajax downto
+downtos.forEach(downto => {
+    const postid = downto.dataset.id;
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    downto.addEventListener('click', () => {
+
+        fetch('/posts/'+ postid + '/downto', {
+            method: 'PATCH',
+            headers: {
+                'X-CSRF-Token': token,
+            }
+        });
+
+        const postTarget = downto.parentNode.parentNode.nextElementSibling;
+        const moveTarget = downto.parentNode.parentNode;
+
+        if (moveTarget !== ul.lastElementChild) {
+          ul.insertBefore(postTarget, moveTarget);
+        }
+    })
+});
