@@ -13,3 +13,7 @@
              @csrf
              <input type="checkbox" {{ $post->is_done ? 'checked' : ''; }}>
         </form>
+        
+        
+        <input class="title-update" type="text" value="{{ $post->title}}" name="updateTitle" onfocus="this.select();">
+
