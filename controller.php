@@ -5,6 +5,20 @@ public function index()
             ->with(['posts' => $posts]);
 }
 
+    public function store(PostRequest $request)
+    {
+        $post = new Post();
+
+        $post->title = $request->title;
+
+        $post->save();
+
+        $post->pos = $post->id + 100;
+        $post->save();
+
+        return response()->json(['id' => Post::max('id')]);
+
+    }
 
 
 
